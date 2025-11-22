@@ -1012,5 +1012,10 @@ require('lazy').setup({
   },
 })
 
+vim.opt.expandtab = true
+vim.opt.tabstop = 4 
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
