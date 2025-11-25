@@ -273,14 +273,14 @@ require('lazy').setup({
   --
   -- LaTeX plugin.
   {
-    "lervag/vimtex",
-    lazy = false,     -- we don't want to lazy load VimTeX
+    'lervag/vimtex',
+    lazy = false, -- we don't want to lazy load VimTeX
     -- tag = "v2.15", -- uncomment to pin to a specific release
     init = function()
       -- VimTeX configuration goes here, e.g.
-      vim.g.vimtex_view_method = "zathura"
-    end
-  }
+      vim.g.vimtex_view_method = 'zathura'
+    end,
+  },
   -- See `:help gitsigns` to understand what the configuration keys do
   { -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -1024,7 +1024,7 @@ require('lazy').setup({
 })
 
 vim.opt.expandtab = true
-vim.opt.tabstop = 4 
+vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 
