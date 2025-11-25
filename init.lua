@@ -246,6 +246,8 @@ rtp:prepend(lazypath)
 --
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
+  { 'lervag/vimtex' },
+
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'NMAC427/guess-indent.nvim', -- Detect tabstop and shiftwidth automatically
 
@@ -1017,30 +1019,5 @@ vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 
--- AI CODE - REVIEW AND MAKE SURE WORKS AS EXPECTED.
--- Set the directory where Packer is installed
-local packer_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
--- Check if Packer is installed
-if vim.fn.empty(vim.fn.glob(packer_path)) > 0 then
-  vim.cmd('!git clone --depth 1 https://github.com/wbthomason/packer.nvim ' .. packer_path)
-end
-
--- Add Packer to the runtime path
-vim.opt.runtimepath:prepend(packer_path)
-
--- Load Packer
-require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim' -- Let Packer manage itself
-
-  -- Install VimTeX
-  use {
-    'lervag/vimtex',
-    config = function()
-      vim.g.vimtex_view_method = 'zathura' -- Change to your preferred PDF viewer
-    end,
-  }
-
-  -- Add more plugins here
-end)
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
