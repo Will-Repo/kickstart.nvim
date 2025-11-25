@@ -270,8 +270,6 @@ require('lazy').setup({
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`.
   --
-  --
-  -- LaTeX plugin.
   -- See `:help gitsigns` to understand what the configuration keys do
   { -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -1019,18 +1017,30 @@ vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 
-require('packer').startup(function()
-  use 'wbthomason/packer.nvim' -- Packer can manage itself
+-- AI CODE - REVIEW AND MAKE SURE WORKS AS EXPECTED.
+-- Set the directory where Packer is installed
+local packer_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
+-- Check if Packer is installed
+if vim.fn.empty(vim.fn.glob(packer_path)) > 0 then
+  vim.cmd('!git clone --depth 1 https://github.com/wbthomason/packer.nvim ' .. packer_path)
+end
 
-  -- Add VimTeX
+-- Add Packer to the runtime path
+vim.opt.runtimepath:prepend(packer_path)
+
+-- Load Packer
+require('packer').startup(function(use)
+  use 'wbthomason/packer.nvim' -- Let Packer manage itself
+
+  -- Install VimTeX
   use {
     'lervag/vimtex',
     config = function()
-      vim.g.vimtex_view_method = 'zathura' -- Set to your preferred PDF viewer
-      vim.g.vimtex_complete_enabled = 1
+      vim.g.vimtex_view_method = 'zathura' -- Change to your preferred PDF viewer
     end,
   }
-end)
 
+  -- Add more plugins here
+end)
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
